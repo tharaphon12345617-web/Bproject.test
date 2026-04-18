@@ -1,8 +1,15 @@
 "use client";
 
-export default function ProfileImageUpload({ user, setUser }: any) {
-  async function handleUpload(e: any) {
-    const file = e.target.files[0];
+import { type ChangeEvent, type Dispatch, type SetStateAction } from "react";
+
+type ProfileImageUploadProps = {
+  user: { profileImage?: string } | null;
+  setUser: Dispatch<SetStateAction<{ profileImage?: string } | null>>;
+};
+
+export default function ProfileImageUpload({ user, setUser }: ProfileImageUploadProps) {
+  async function handleUpload(e: ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
     if (!file) return;
 
     const reader = new FileReader();
@@ -30,7 +37,7 @@ export default function ProfileImageUpload({ user, setUser }: any) {
   return (
     <div className="flex flex-col md:flex-row items-center gap-4 mb-6 bg-white p-6 rounded-3xl shadow-sm border border-slate-200">
       <img
-        src={user.profileImage || "/default-avatar.png"}
+        src={user?.profileImage || "/default-avatar.png"}
         alt="Profile"
         className="w-28 h-28 rounded-full object-cover border border-slate-300"
       />

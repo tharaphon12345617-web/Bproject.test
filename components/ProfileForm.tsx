@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type Dispatch, type SetStateAction } from "react";
 import { useRouter } from "next/navigation";
 
 const LEVEL_OPTIONS = [
@@ -11,8 +11,13 @@ const LEVEL_OPTIONS = [
   "Management Level",
 ];
 
-export default function ProfileForm({ user, setUser }: any) {
-  const [form, setForm] = useState<any>(user || {});
+type ProfileFormProps = {
+  user: Record<string, any> | null;
+  setUser: Dispatch<SetStateAction<Record<string, any> | null>>;
+};
+
+export default function ProfileForm({ user, setUser }: ProfileFormProps) {
+  const [form, setForm] = useState<Record<string, any>>(user || {});
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 

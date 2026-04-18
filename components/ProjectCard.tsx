@@ -1,4 +1,10 @@
-export function ProjectCard({ title, desc, result }) {
+interface ProjectCardProps {
+  title: string;
+  desc: string;
+  result: string;
+}
+
+export function ProjectCard({ title, desc, result }: ProjectCardProps) {
   return (
     <div className="rounded-lg border shadow-sm p-5 bg-white hover:shadow-xl transition">
       <div className="h-40 bg-gray-200 rounded mb-4"></div>

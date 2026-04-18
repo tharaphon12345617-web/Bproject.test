@@ -1,4 +1,10 @@
-export function ServiceCard({ title, desc, points }) {
+interface ServiceCardProps {
+  title: string;
+  desc: string;
+  points: string[];
+}
+
+export function ServiceCard({ title, desc, points }: ServiceCardProps) {
   return (
     <div className="border p-6 rounded-lg shadow-sm hover:shadow-xl transition bg-white">
       <h3 className="text-xl font-semibold mb-3 text-primary">{title}</h3>
